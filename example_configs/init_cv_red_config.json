@@ -1,0 +1,39 @@
+{
+    "ModelConfig": {
+        "rnn_type": "LSTM",
+	"hidden_size": 8,
+        "embd_dim": 8,
+        "num_layers": 1,
+	"bias": true,
+        "device": null,
+        "dropout_rate": 0.0,
+        "bidirectional": false,
+        "reduction_method": "sum"
+    },
+    "TrainConfig": {
+        "train_fp": "data/pseudo_init_cv_red/train.txt",
+        "dev_fp": "data/pseudo_init_cv_red/dev.txt",
+        "split": 0.3,
+        "vocab_fp": null,
+        "x_sep": null,
+        "y_sep": "-",
+        "output_folder_name": "outputs",
+        "sub_folder_name": "pseudo_init_cv_red",
+        "batch_size": 100,
+        "weight_decay": 1e-05,
+        "learning_rate": 0.01,
+        "acc_threshold": 0.0,
+        "print_eval_freq": 200,
+        "max_epoch_num": 5000,
+        "train_exit_acc": 1.0,
+        "eval_exit_acc": 1.0,
+        "plot_training_log": true,
+        "show_plot": true
+    },
+    "InferConfig": {
+        "out_dir": "outputs/pseudo_init_cv_red",
+        "infer_text_fp": "data/pseudo_init_cv_red/test.txt",
+        "x_sep": null,
+        "y_sep": "-"
+    }
+}

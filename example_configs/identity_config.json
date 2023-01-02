@@ -1,0 +1,39 @@
+{
+    "ModelConfig": {
+        "rnn_type": "SRNN",
+        "hidden_size": 2,
+        "embd_dim": 2,
+        "num_layers": 1,
+        "bias": true,
+        "device": null,
+        "dropout_rate": 0.0,
+        "bidirectional": false,
+        "reduction_method": "sum"
+    },
+    "TrainConfig": {
+        "train_fp": "data/identity/train.txt",
+        "dev_fp": "data/identity/dev.txt",
+        "split": 0.3,
+        "vocab_fp": null,
+        "x_sep": null,
+        "y_sep": null,
+        "output_folder_name": "outputs",
+        "sub_folder_name": "identity",
+        "batch_size": 100,
+        "weight_decay": 1e-05,
+        "learning_rate": 0.01,
+        "acc_threshold": 0.0,
+        "print_eval_freq": 200,
+        "max_epoch_num": 10000,
+        "train_exit_acc": 1.0,
+        "eval_exit_acc": 1.0,
+        "plot_training_log": true,
+        "show_plot": false
+    },
+    "InferConfig": {
+        "out_dir": "outputs/identity",
+        "infer_text_fp": "data/identity/test.txt",
+        "x_sep": null,
+        "y_sep": null
+    }
+}

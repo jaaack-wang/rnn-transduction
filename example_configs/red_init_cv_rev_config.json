@@ -1,0 +1,39 @@
+{
+    "ModelConfig": {
+        "rnn_type": "GRU",
+	"hidden_size": 8,
+        "embd_dim": 8,
+        "num_layers": 1,
+	"bias": true,
+        "device": null,
+        "dropout_rate": 0.0,
+        "bidirectional": false,
+        "reduction_method": "sum"
+    },
+    "TrainConfig": {
+        "train_fp": "data/red_init_cv_rev/train.txt",
+        "dev_fp": "data/red_init_cv_rev/dev.txt",
+        "split": 0.3,
+        "vocab_fp": null,
+        "x_sep": "-",
+        "y_sep": "",
+        "output_folder_name": "outputs",
+        "sub_folder_name": "red_init_cv_rev",
+        "batch_size": 100,
+        "weight_decay": 1e-05,
+        "learning_rate": 0.01,
+        "acc_threshold": 0.0,
+        "print_eval_freq": 20,
+        "max_epoch_num": 1000,
+        "train_exit_acc": 1.0,
+        "eval_exit_acc": 1.0,
+        "plot_training_log": true,
+        "show_plot": true
+    },
+    "InferConfig": {
+        "out_dir": "outputs/red_init_cv_rev",
+        "infer_text_fp": "data/red_init_cv_rev/test.txt",
+        "x_sep": "-",
+        "y_sep": ""
+    }
+}
