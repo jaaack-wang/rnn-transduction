@@ -9,6 +9,11 @@ import argparse
 import json
 import torch
 from os.path import join
+
+import sys
+import pathlib
+# import from local script
+sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from pytorch_utils import get_model
 from utils import save_ds_in_txt, read_json
 from pytorch_utils import customize_predictor

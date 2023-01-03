@@ -8,6 +8,12 @@ import torch
 from functools import partial
 from torch.utils.data import Dataset, DataLoader
 
+import sys
+import pathlib
+# import from local script
+sys.path.insert(0, str(pathlib.Path(__file__).parent))
+from utils import read_data
+
 
 class Transform(Dataset):
     '''Creates a Dataset class that encode data into sequences of integers.
@@ -31,33 +37,6 @@ class Transform(Dataset):
         y = self.out_seq_encoder(out_seq)
         
         return x, y
-
-
-def read_data(filepath, skip=0, sep="\t"):
-    '''Reads data given filepath. Data should be stored line by line 
-    and each line contains an input and an output separated by {sep}.
-    
-    Args:
-        - filepath (str): filepath-like string
-        - skip (integer): number of rows to skip in the file
-        - sep (str): separator for input/output in each line. Defaults to "\t".
-    '''
-    data = []
-    file = open(filepath, "r")
-    
-    for _ in range(skip):
-        next(file)
-    
-    for line in file:
-        line = line.strip().split(sep)
-        
-        assert len(line) >= 2, "each line" \
-        "must have two items separated by" \
-        f"{sep} in {filepath}"
-        
-        data.append([line[0], line[-1]])
-
-    return data
 
 
 def make_map(vocab):

@@ -13,6 +13,10 @@ import torch.nn as nn
 import torch.optim as optim
 from datetime import datetime
 
+import sys
+import pathlib
+# import from local script
+sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from visualization import plot_training_log
 from utils import read_data, create_dir, read_json, save_dict_as_json
 from dataloader import get_text_encoder_decoder, customize_dataloader_func
