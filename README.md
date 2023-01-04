@@ -37,7 +37,7 @@ Both pipelines are highly customized as a tradeoff for simplicity.
 
 ## What RNNs can transduce
 
-It turns out that RNNs can model transduction tasks very robustly where each input symbol corresponds to one determined output symbol, namely, one-to-one mapping. In this case, only a few training data that covers all the possible transduction are needed. For example, to learn identity function where each input symbol is mapped to itself, this can be made possible by one example where the sequence is a list of all possible tokens, and a hidden state size as small as 2, although more examples greatly accelerate learning speed. I have trained such models and extensively tested them on sequences of over 10,000 symbols without an error. 
+It turns out that RNNs can model transduction tasks very robustly where each input symbol corresponds to only one determined output symbol. In this case, only a few training examples that cover all the possible transduction are needed. For example, to learn identity function where each input symbol is mapped to itself, this can be made possible by one example where the sequence is a list of all possible tokens, and a hidden state size as small as 2, although more examples greatly accelerate learning speed. I have trained such models and extensively tested them on sequences of over 10,000 symbols without an error. 
 
 In the provided examples (check `data`, `example_configs`, and `outputs`), I used RNNs to model the following functions (where the vocabulary is simply the 26 lowercase English letters): 
 
@@ -49,13 +49,13 @@ In the provided examples (check `data`, `example_configs`, and `outputs`), I use
 
 It turns out that the **initial CV reduplication function** is the hardest to learn, which requires more training examples, and a larger sized model (but still very small), because some outputs are conditioned on the construction of the input sequences. I tried several RNN models on 701 pseudo examples, covering all the possible consonant initials plus some random examples, but the trained models still cannot achieve 100% accuracy on unseen examples. However, a well-trained model can robustly achieve over 90% accuracy even for sequences much longer than those seen during training. 
 
-Please note that, **reduplicated initial CV reversion** is way much easier because each input symbol is mapped to a unique output symbol, so it can be learnt perfectly (or nearly perfectly). 
+Please note that, **reduplicated initial CV reversion** is way much easier because each input symbol is mapped to an deterministic output symbol, so it can be learnt perfectly (or nearly perfectly). 
 
 
 
 ## Limitations
 
-Nevertheless, RNNs **are not good for practical use** because it can only produce an output sequence of the **same length** with the input sequence, **in terms of the number of tokens**. Even for the initial CV reduplication function where the output sequence  seems to be longer than the input sequence, the trick is, the RNNs take those *cvc* structures as speicifc tokens for the output sequences, rather than three individual tokens as in the case of the input sequences. Similarly, for the reduplicated initial CV reversion function, it is the opposite. 
+Nevertheless, RNNs **are not good for practical use** because it can only produce an output sequence of the **same length** with the input sequence, **in terms of the number of tokens**. Even for the initial CV reduplication function where the output sequence  seems to be longer than the input sequence, the trick is, the RNNs take those *vcv* structures as speicifc tokens for the output sequences, rather than three individual tokens as in the case of the input sequences. Similarly, for the reduplicated initial CV reversion function, it is the opposite. 
 
 In other words, to make RNNs useful for transduction tasks in real world, we need to first have well aligned input-output sequence pairs to train the models, which, however, is usually the hardest thing to do. Because if we know in advance how each input should be mapped to the output, we can simply use symbolic approaches to do the modelling. 
 
