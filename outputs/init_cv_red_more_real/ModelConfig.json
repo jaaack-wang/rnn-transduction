@@ -1,0 +1,14 @@
+{
+    "rnn_type": "SRNN",
+    "hidden_size": 32,
+    "embd_dim": 32,
+    "num_layers": 1,
+    "bias": true,
+    "device": "cpu",
+    "dropout_rate": 0.0,
+    "bidirectional": false,
+    "reduction_method": "sum",
+    "in_vocab_size": 27,
+    "out_vocab_size": 147,
+    "param#": 7827
+}

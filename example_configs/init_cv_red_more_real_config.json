@@ -1,0 +1,39 @@
+{
+    "ModelConfig": {
+        "rnn_type": "SRNN",
+	"hidden_size": 32,
+        "embd_dim": 32,
+        "num_layers": 1,
+	"bias": true,
+        "device": null,
+        "dropout_rate": 0.0,
+        "bidirectional": false,
+        "reduction_method": "sum"
+    },
+    "TrainConfig": {
+        "train_fp": "data/init_cv_red_more_real/train.txt",
+        "dev_fp": "data/init_cv_red_more_real/dev.txt",
+        "split": 0.3,
+        "vocab_fp": null,
+        "x_sep": "",
+        "y_sep": "-",
+        "output_folder_name": "outputs",
+        "sub_folder_name": "init_cv_red_more_real",
+        "batch_size": 100,
+        "weight_decay": 1e-05,
+        "learning_rate": 0.01,
+        "acc_threshold": 0.0,
+        "print_eval_freq": 2,
+        "max_epoch_num": 100,
+        "train_exit_acc": 1.0,
+        "eval_exit_acc": 1.0,
+        "plot_training_log": true,
+        "show_plot": true
+    },
+    "InferConfig": {
+        "out_dir": "outputs/init_cv_red_more_real",
+        "infer_text_fp": "data/init_cv_red_more_real/test.txt",
+        "x_sep": "",
+        "y_sep": "-"
+    }
+}

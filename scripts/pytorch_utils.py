@@ -273,6 +273,7 @@ def predict(text, model, dataloader_func,
     predicted = []
     with torch.no_grad():
         for X, Y in dataloader:
+            X = X.to(model.device)
             logits = model(X)
             Ypred = logits.argmax(2)
             
@@ -309,7 +310,7 @@ def predict_next(next_text, model, in_seq_encoder, out_seq_decoder, re_start=Fal
     
     predicted = []
     for n in in_seq_encoder(next_text):
-        x = torch.tensor([n]).long()
+        x = torch.tensor([n]).long().to(model.device)
         output = model.next_output(x)
         pred = output.argmax(2).item()
         predicted.append(pred)
